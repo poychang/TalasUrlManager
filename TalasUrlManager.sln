@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalasUrlManager", "TalasUrl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{18DAF74D-47E4-4D10-92B0-E32E22C93E86}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{C52C9F0D-20EA-452E-828E-19A828DDACC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{18DAF74D-47E4-4D10-92B0-E32E22C93E86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18DAF74D-47E4-4D10-92B0-E32E22C93E86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18DAF74D-47E4-4D10-92B0-E32E22C93E86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C52C9F0D-20EA-452E-828E-19A828DDACC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C52C9F0D-20EA-452E-828E-19A828DDACC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C52C9F0D-20EA-452E-828E-19A828DDACC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C52C9F0D-20EA-452E-828E-19A828DDACC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
