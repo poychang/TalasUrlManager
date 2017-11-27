@@ -5,6 +5,7 @@ using DataAccess.Repository;
 using DataAccess.Schema;
 using Microsoft.AspNetCore.Mvc;
 using TalasUrlManager.Models;
+using Utility;
 
 namespace TalasUrlManager.Controllers
 {
@@ -44,6 +45,9 @@ namespace TalasUrlManager.Controllers
 
             var entity = _mapper.Map<ShortUrlDto, ShortUrlSet>(data);
             _repo.Create(entity);
+            _repo.SaveChanges();
+
+            entity.ShortUrl = NumberConverter.FromDecimalTo62Hex(entity.Id);
             _repo.SaveChanges();
 
             return Get(entity.Id);
