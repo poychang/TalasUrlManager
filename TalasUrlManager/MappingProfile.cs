@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using DataAccess.Schema;
+using TalasUrlManager.Models;
 
 namespace TalasUrlManager
 {
@@ -7,6 +9,7 @@ namespace TalasUrlManager
         public MappingProfile()
         {
             // Add as many of these lines as you need to map your objects
+            CreateMap<ShortUrlSet, ShortUrlDto>();
         }
     }
 }
