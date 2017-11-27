@@ -37,7 +37,7 @@ namespace TalasUrlManager.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]ShortUrlDto data)
         {
-            if (!ModelState.IsValid) return new BadRequestResult();
+            if (!ModelState.IsValid) return BadRequest();
 
             data.CreateDate = DateTime.Now;
             data.IsActive = true;
@@ -51,21 +51,25 @@ namespace TalasUrlManager.Controllers
 
         // PUT api/ShortUrl/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]ShortUrlDto data)
+        public IActionResult Put(int id, [FromBody]ShortUrlDto data)
         {
-            if (!ModelState.IsValid) return;
+            if (!ModelState.IsValid) return BadRequest();
 
             var entity = _repo.Read(p => p.Id == id);
             _repo.Update(_mapper.Map(data, entity));
             _repo.SaveChanges();
+
+            return Get(entity.Id);
         }
 
         // DELETE api/ShortUrl/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
             _repo.Delete(_repo.Read(p => p.Id == id));
             _repo.SaveChanges();
+
+            return Accepted();
         }
     }
 }
