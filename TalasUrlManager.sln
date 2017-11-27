@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalasUrlManager", "TalasUrlManager\TalasUrlManager.csproj", "{4A3E7618-4412-4A61-A059-0511D5C413B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{18DAF74D-47E4-4D10-92B0-E32E22C93E86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utility", "Utility\Utility.csproj", "{18DAF74D-47E4-4D10-92B0-E32E22C93E86}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{C52C9F0D-20EA-452E-828E-19A828DDACC4}"
 EndProject
