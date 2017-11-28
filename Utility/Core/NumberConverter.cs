@@ -1,5 +1,8 @@
-﻿namespace Utility
+﻿using System;
+
+namespace Utility.Core
 {
+    [Obsolete("此方法已過時，請改用 UtilityService", false)]
     public static class NumberConverter
     {
         // 62 進位編碼，可加一些字符也可以實現 72, 96 等任意進制轉換，但是有符號數據不直觀，會影響閱讀

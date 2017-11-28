@@ -13,11 +13,14 @@ namespace TalasUrlManager.Controllers
     public class ShortUrlController : Controller
     {
         private readonly IRepository<ShortUrlSet> _repo;
-        private readonly IMapper _mapper;
-        public ShortUrlController(IDbManager dbManager, IMapper mapper)
+        private readonly IMapper _mapper;
+        private readonly IUtilityService _utility;
+
+        public ShortUrlController(IDbManager dbManager, IMapper mapper, IUtilityService utility)
         {
             _repo = dbManager.Repository<ShortUrlSet>();
             _mapper = mapper;
+            _utility = utility;
         }
 
         // GET api/ShortUrl
@@ -47,7 +50,7 @@ namespace TalasUrlManager.Controllers
             _repo.Create(entity);
             _repo.SaveChanges();
 
-            entity.ShortUrl = NumberConverter.FromDecimalTo62Hex(entity.Id);
+            entity.ShortUrl = _utility.ParseToCardinal(entity.Id);
             _repo.SaveChanges();
 
             return Get(entity.Id);
