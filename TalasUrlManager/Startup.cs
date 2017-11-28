@@ -28,10 +28,13 @@ namespace TalasUrlManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
-            services.AddSingleton<IDbManager>(new SqliteManager(new TalasUrlDbContext()));
             services.AddUtility(option =>
             {
                 option.CardinalString = Configuration["UtilityOptions:CardinalString"];
+            });
+            services.AddSqliteManager(option =>
+            {
+                option.ConnectionString = Configuration["DbManagerOptions:ConnectionString"];
             });
 
             services.AddMvc();

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using DataAccess.Repository;
+using DataAccess.Schema;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace DataAccess
 {
@@ -19,11 +21,11 @@ namespace DataAccess
         private Hashtable _repositories;
 
         /// <summary>建構式</summary>
-        /// <param name="context">設定 context</param>
-        public SqliteManager(DbContext context)
+        /// <param name="optionsAccessor"></param>
+        public SqliteManager(IOptions<DbManagerOptions> optionsAccessor)
         {
             Console.WriteLine("Connect to Database");
-            _context = context;
+            _context = new TalasUrlDbContext(optionsAccessor.Value.ConnectionString);
         }
 
         /// <summary>解構式</summary>
