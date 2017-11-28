@@ -11,7 +11,7 @@ using System;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(TalasUrlDbContext))]
-    [Migration("20171127063511_InitialCreate")]
+    [Migration("20171128035914_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,8 @@ namespace DataAccess.Migrations
                     b.Property<DateTime>("CreateDate");
 
                     b.Property<string>("CustomizeUrl");
+
+                    b.Property<string>("Description");
 
                     b.Property<DateTime>("ExpireDate");
 

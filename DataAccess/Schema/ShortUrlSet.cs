@@ -20,6 +20,9 @@ namespace DataAccess.Schema
         [Required]
         public string OriginalUrl { get; set; }
 
+        /// <summary>說明</summary>
+        public string Description { get; set; }
+
         /// <summary>建立日期</summary>
         [Required]
         public DateTime CreateDate { get; set; }

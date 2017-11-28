@@ -30,6 +30,8 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("CustomizeUrl");
 
+                    b.Property<string>("Description");
+
                     b.Property<DateTime>("ExpireDate");
 
                     b.Property<bool>("IsActive");
