@@ -80,7 +80,7 @@ namespace DataAccess
             // 檢查是否已經初始化過類行為 TEntity 的 Entity Repository
             if (_repositories.ContainsKey(type)) return (IRepository<TEntity>)_repositories[type];
 
-            var repositoryType = typeof(EfGenericRepository<>);
+            var repositoryType = typeof(EFGenericRepository<>);
             var repositoryInstance =
                 Activator.CreateInstance(repositoryType
                     .MakeGenericType(typeof(TEntity)), _context);

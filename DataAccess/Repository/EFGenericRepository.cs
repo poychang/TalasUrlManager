@@ -10,14 +10,15 @@ namespace DataAccess.Repository
     /// REF: 搭配 Repository Pattern ( https://ithelp.ithome.com.tw/articles/10157484 )
     /// </remarks>
     /// <typeparam name="TEntity">Entity Framework Model 裡面的 Entity Type</typeparam>
-    public class EfGenericRepository<TEntity> : IRepository<TEntity>
+    // ReSharper disable once InconsistentNaming
+    public class EFGenericRepository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {
         private DbContext DbContext { get; }
 
         /// <summary>建構式</summary>
         /// <param name="dbContext">Entity 所在的 DbContext</param>
-        public EfGenericRepository(DbContext dbContext)
+        public EFGenericRepository(DbContext dbContext)
         {
             DbContext = dbContext;
         }
