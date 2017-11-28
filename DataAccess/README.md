@@ -1,0 +1,124 @@
+﻿# 資料存取層的注意事項
+
+使用 Entity Framework Core 作為資料存取的框架，並搭配使用 SQLite 資料庫。
+
+## 檔案用途簡述
+
+* `Database` 存放產生出 SQLite 檔案資料庫的資料夾
+* `Migrations` 使用 EF Core 所產生的 Migrations 程式碼
+* `Repository`
+  * `IRepository` 定義操作資料庫需要哪些方法
+  * `EFGenericRepository` 繼承 `IRepository` 並使用 EF Core 操作資料庫的泛型物件
+* `Schema` 資料庫及資料表的 EF Core 模型
+* `IDbManager.cs` 定義資料庫管理者介面，並實做出 Unit of Work 模式
+* `SqliteManager.cs` 重點在 `Repository<TEtity>` 這個方法，此方法會產生操作 DbSet 的 Repository 物件
+
+## 相關資訊
+
+* 教學文(en)：[使用 EF Core 在 Console App 建立 新資料庫](https://docs.microsoft.com/zh-tw/ef/core/get-started/netcore/new-db-sqlite)
+* 執行以下指令安裝所需套件
+  * `dotnet add package Microsoft.EntityFrameworkCore.Sqlite`
+  * `dotnet add package Microsoft.EntityFrameworkCore.Design`
+  * `dotnet add tool Microsoft.EntityFrameworkCore.Tools.DotNet`
+    * 目前還不支援，要手動在 `.csproj` 中增加
+    * `<ItemGroup><DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" /></ItemGroup>`
+* 用程式碼表達資料庫及資料表結構，即建立 DbContext
+* 執行以下指令建立資料庫及其資料表
+    * `dotnet ef migrations add InitialCreate` 產生 migrations 程式碼
+    * `dotnet ef database update` 執行 migrations 程式碼至資料庫
+
+## 使用 EF Core 於 SQLite 的限制
+
+使用 EF Core 來處理 SQLite 資料庫時，有一些 Migrations 的限制，例如無法使用 Migrations 來修改 Table，必須砍掉重建或手動處理，詳細資訊請參考此[連結](https://docs.microsoft.com/zh-tw/ef/core/providers/sqlite/limitations)或下表：
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>Operation</th>
+    <th>Supported?</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>AddColumn</td>
+    <td>✔</td>
+    <td>增加欄位</td>
+  </tr>
+  <tr>
+    <td>AddForeignKey</td>
+    <td>✗</td>
+    <td>增加外來鍵</td>
+  </tr>
+  <tr>
+    <td>AddPrimaryKey</td>
+    <td>✗</td>
+    <td>增加主鍵</td>
+  </tr>
+  <tr>
+    <td>AddUniqueConstraint</td>
+    <td>✗</td>
+    <td>增加唯一限制</td>
+  </tr>
+  <tr>
+    <td>AlterColumn</td>
+    <td>✗</td>
+    <td>變更欄位</td>
+  </tr>
+  <tr>
+    <td>CreateIndex</td>
+    <td>✔</td>
+    <td>新增索引</td>
+  </tr>
+  <tr>
+    <td>CreateTable</td>
+    <td>✔</td>
+    <td>新增資料表</td>
+  </tr>
+  <tr>
+    <td>DropColumn</td>
+    <td>✗</td>
+    <td>刪除欄位</td>
+  </tr>
+  <tr>
+    <td>DropForeignKey</td>
+    <td>✗</td>
+    <td>刪除外來鍵</td>
+  </tr>
+  <tr>
+    <td>DropIndex</td>
+    <td>✔</td>
+    <td>刪除索引</td>
+  </tr>
+  <tr>
+    <td>DropPrimaryKey</td>
+    <td>✗</td>
+    <td>刪除主鍵</td>
+  </tr>
+  <tr>
+    <td>DropTable</td>
+    <td>✔</td>
+    <td>刪除資料表</td>
+  </tr>
+  <tr>
+    <td>DropUniqueConstraint</td>
+    <td>✗</td>
+    <td>刪除唯一限制</td>
+  </tr>
+  <tr>
+    <td>RenameColumn</td>
+    <td>✗</td>
+    <td>變更欄位名稱</td>
+  </tr>
+  <tr>
+    <td>RenameIndex</td>
+    <td>✗</td>
+    <td>變更索引名稱</td>
+  </tr>
+  <tr>
+    <td>RenameTable</td>
+    <td>✔</td>
+    <td>變更資料表名稱</td>
+  </tr>
+</tbody>
+</table>
