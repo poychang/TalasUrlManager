@@ -18,7 +18,7 @@ namespace DataAccess.Migrations
                     CreateDate = table.Column<DateTime>(nullable: false),
                     CustomizeUrl = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    ExpireDate = table.Column<DateTime>(nullable: false),
+                    ExpireDate = table.Column<DateTime>(nullable: true),
                     IsActive = table.Column<bool>(nullable: false),
                     OriginalUrl = table.Column<string>(nullable: false),
                     ShortUrl = table.Column<string>(nullable: true)

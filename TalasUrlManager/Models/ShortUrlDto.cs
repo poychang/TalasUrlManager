@@ -16,11 +16,14 @@ namespace TalasUrlManager.Models
         /// <summary>原始網址</summary>
         public string OriginalUrl { get; set; }
 
+        /// <summary>說明</summary>
+        public string Description { get; set; }
+
         /// <summary>建立日期</summary>
         public DateTime CreateDate { get; set; }
 
         /// <summary>有效日期</summary>
-        public DateTime ExpireDate { get; set; }
+        public DateTime? ExpireDate { get; set; }
 
         /// <summary>點擊次數</summary>
         public int Clicks { get; set; }

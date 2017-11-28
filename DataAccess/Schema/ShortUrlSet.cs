@@ -28,7 +28,7 @@ namespace DataAccess.Schema
         public DateTime CreateDate { get; set; }
 
         /// <summary>有效日期</summary>
-        public DateTime ExpireDate { get; set; }
+        public DateTime? ExpireDate { get; set; }
 
         /// <summary>點擊次數</summary>
         [Required]

@@ -32,7 +32,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<DateTime>("ExpireDate");
+                    b.Property<DateTime?>("ExpireDate");
 
                     b.Property<bool>("IsActive");
 
