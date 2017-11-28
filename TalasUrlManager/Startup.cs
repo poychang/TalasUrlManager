@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using DataAccess;
-using DataAccess.Schema;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Utility;
 
 namespace TalasUrlManager
 {
@@ -28,13 +19,13 @@ namespace TalasUrlManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
-            services.AddUtility(option =>
+            services.AddUtility(options =>
             {
-                option.CardinalString = Configuration["UtilityOptions:CardinalString"];
+                options.CardinalString = Configuration["UtilityOptions:CardinalString"];
             });
-            services.AddSqliteManager(option =>
+            services.AddSqliteManager(options =>
             {
-                option.ConnectionString = Configuration["DbManagerOptions:ConnectionString"];
+                options.ConnectionString = Configuration["DbManagerOptions:ConnectionString"];
             });
 
             services.AddMvc();
