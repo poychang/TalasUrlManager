@@ -13,7 +13,7 @@ namespace Utility
         /// <param name="optionsAccessor">選項</param>
         public UtilityService(IOptions<UtilityOptions> optionsAccessor)
         {
-            CardinalNumberConverter = new CardinalNumberConverter(optionsAccessor.Value);
+            CardinalNumberConverter = new CardinalNumberConverter(optionsAccessor.Value.CardinalNumberConverterOptions);
         }
 
         /// <summary>10 進制數轉換成指定進制</summary>

@@ -21,7 +21,7 @@ namespace TalasUrlManager
             services.AddOptions();
             services.AddUtility(options =>
             {
-                options.CardinalString = Configuration["UtilityOptions:CardinalString"];
+                options.CardinalNumberConverterOptions.CardinalString = Configuration["UtilityOptions:CardinalString"];
             });
             services.AddSqliteManager(options =>
             {
