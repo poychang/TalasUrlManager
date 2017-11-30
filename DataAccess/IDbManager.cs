@@ -9,7 +9,7 @@ namespace DataAccess
     {
         /// <summary>檢查資料庫是否存在</summary>
         /// <returns>是否存在</returns>
-        bool DbIsExist();
+        bool IsDatabasebExist();
 
         /// <summary>儲存所有異動</summary>
         void Save();
