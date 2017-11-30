@@ -11,7 +11,7 @@
   * 分別代表功能實作程式碼，以及對應的選項
 * `IUtilityService.cs` 工具服務的介面，用來將功能對外開放
 * `UtilityService.cs` 工具服務，各項功能的實作，通常會參考 `Core` 中的功能並使用
-* `UtilityOptions.cs` 工具服務選項，繼承各項功能的 Options，並對 `UtilityService` 做設定
+* `UtilityOptions.cs` 工具服務選項，包含各項功能的 Options，並對 `UtilityService` 做設定
 * `UtilityServiceCollectionExtension.cs` 用於 Dotnet Core 的相依性注入，為設定工具服務的擴展方法
 
 ## 新增功能的流程
