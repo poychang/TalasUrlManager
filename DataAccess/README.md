@@ -11,7 +11,8 @@
   * `EFGenericRepository` 繼承 `IRepository` 並使用 EF Core 操作資料庫的泛型物件
 * `Schema` 資料庫及資料表的 EF Core 模型
 * `IDbManager.cs` 定義資料庫管理者介面，並實做出 Unit of Work 模式
-* `SqliteManager.cs` 重點在 `Repository<TEtity>` 這個方法，此方法會產生操作 DbSet 的 Repository 物件
+* `DbManager.cs` 使用 InMemory 資料庫，只用來測試，重點在 `Repository<TEtity>` 這個方法，此方法會產生操作 DbSet 的 Repository 物件
+* `SqliteManager.cs` 將資料庫換成 SQLite
 
 ## 相關資訊
 
