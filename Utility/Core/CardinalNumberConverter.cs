@@ -1,4 +1,6 @@
-﻿namespace Utility.Core
+﻿using Utility.Options;
+
+namespace Utility.Core
 {
     /// <summary>基數編碼轉換工具</summary>
     public class CardinalNumberConverter
