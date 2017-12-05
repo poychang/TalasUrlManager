@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Utility.Core;
 
 namespace TalasUrlManager
 {
@@ -21,7 +22,10 @@ namespace TalasUrlManager
             services.AddOptions();
             services.AddUtility(options =>
             {
-                options.CardinalNumberConverterOptions.CardinalString = Configuration["UtilityOptions:CardinalString"];
+                options.CardinalNumberConverterOptions = new CardinalNumberConverterOptions()
+                {
+                    CardinalString = Configuration["UtilityOptions:CardinalString"]
+                };
             });
             services.AddSqliteManager(options =>
             {
