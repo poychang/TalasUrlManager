@@ -1,9 +1,11 @@
 import {NgModule} from '@angular/core';
 
+import {LayoutModule} from '../layout/layout.module';
+
 import {DefaultComponent} from './default/default.component';
 
 @NgModule({
-  imports: [],
+  imports: [LayoutModule],
   exports: [DefaultComponent],
   declarations: [DefaultComponent]
 })
