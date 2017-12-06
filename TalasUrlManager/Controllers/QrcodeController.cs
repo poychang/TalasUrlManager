@@ -1,0 +1,29 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Utility;
+
+namespace TalasUrlManager.Controllers
+{
+    /// <summary>二維條碼圖片控制器</summary>
+    [Route("api/[controller]")]
+    public class QrCodeController : Controller
+    {
+        private readonly IUtilityService _utility;
+
+        public QrCodeController(IUtilityService utility)
+        {
+            _utility = utility;
+        }
+
+        // GET: api/QrCode?size=300&data=PoyChang
+        /// <summary>產生二維條碼圖片</summary>
+        /// <param name="size">圖片尺寸</param>
+        /// <param name="content">資訊</param>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult Get(int size, string content)
+        {
+            var byteData = _utility.GenerateQrCode(size, content);
+            return new FileContentResult(byteData, System.Net.Mime.MediaTypeNames.Image.Jpeg);
+        }
+    }
+}
