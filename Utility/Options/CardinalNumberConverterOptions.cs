@@ -1,4 +1,4 @@
-﻿namespace Utility.Core
+﻿namespace Utility.Options
 {
     /// <summary>編碼轉換</summary>
     public class CardinalNumberConverterOptions
