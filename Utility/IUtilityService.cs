@@ -14,5 +14,11 @@
         /// <param name="value">62 進制的文字</param>
         /// <returns>回傳從指定進制文字轉換成 10 進制的數字</returns>
         decimal ParseToDecimal(string value);
+
+        /// <summary>產生二維條碼</summary>
+        /// <param name="size">圖片尺寸</param>
+        /// <param name="content">資訊</param>
+        /// <returns></returns>
+        byte[] GenerateQrCode(int size, string content);
     }
 }

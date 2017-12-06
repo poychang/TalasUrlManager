@@ -9,11 +9,15 @@ namespace Utility
         /// <summary>基數編碼轉換工具</summary>
         protected CardinalNumberConverter CardinalNumberConverter;
 
+        /// <summary></summary>
+        protected QrCodeHandler QrCodeHandler;
+
         /// <summary>建構式</summary>
         /// <param name="optionsAccessor">選項</param>
         public UtilityService(IOptions<UtilityOptions> optionsAccessor)
         {
             CardinalNumberConverter = new CardinalNumberConverter(optionsAccessor.Value.CardinalNumberConverterOptions);
+            QrCodeHandler = new QrCodeHandler();
         }
 
         /// <summary>10 進制數轉換成指定進制</summary>
@@ -32,6 +36,15 @@ namespace Utility
         public decimal ParseToDecimal(string value)
         {
             return CardinalNumberConverter.ParseToDecimal(value);
+        }
+
+        /// <summary>產生二維條碼</summary>
+        /// <param name="size">圖片尺寸</param>
+        /// <param name="content">資訊</param>
+        /// <returns></returns>
+        public byte[] GenerateQrCode(int size, string content)
+        {
+            return QrCodeHandler.GenerateQrCode(size, content);
         }
     }
 }
