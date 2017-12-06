@@ -7,12 +7,14 @@ import {environment} from '../environments/environment';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import {PagesModule} from './pages/pages.module';
 import {MyMaterialModule} from './shared/my-material.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule, AppRoutingModule, NoopAnimationsModule, MyMaterialModule,
+    PagesModule,
     ServiceWorkerModule.register(
         '/ngsw-worker.js', {enabled: environment.production})
   ],
