@@ -2,5 +2,11 @@ import {NgModule} from '@angular/core';
 
 import {MyMaterialModule} from '../shared/my-material.module';
 
-@NgModule({imports: [MyMaterialModule], exports: [], declarations: []})
+import {HeaderComponent} from './header/header.component';
+
+@NgModule({
+  imports: [MyMaterialModule],
+  exports: [HeaderComponent],
+  declarations: [HeaderComponent]
+})
 export class LayoutModule {}
