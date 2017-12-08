@@ -12,9 +12,11 @@ import {PagesModule} from './pages/pages.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule, AppRoutingModule, NoopAnimationsModule, PagesModule,
-    ServiceWorkerModule.register(
-        '/ngsw-worker.js', {enabled: environment.production})
+    BrowserModule,
+    AppRoutingModule,
+    NoopAnimationsModule,
+    PagesModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
