@@ -1,0 +1,33 @@
+$form-color: #f5f5f5;
+.constrain {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 30px 24px 30px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.header {
+  background-color: $form-color;
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 600px;
+}
+
+.mat-header-row,
+.mat-paginator {
+  background-color: $form-color;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
