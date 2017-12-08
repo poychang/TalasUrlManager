@@ -1,0 +1,25 @@
+/* Custom Material */
+@import '~@angular/material/theming';
+
+// 0. Custom typography config.
+// REF: mat-typography-config function from source code, _typography.scss
+// REF: https://material.angular.io/guide/typography
+@import url('https://fonts.googleapis.com/earlyaccess/notosanstc.css'); // 思源黑體 Noto Sans TC
+$custom-typography-config: mat-typography-config(
+  $font-family: 'Roboto, "Noto Sans TC", "Helvetica Neue", sans-serif'
+);
+
+// 1. Include the common styles with custom typography config for Material Core.
+@include mat-core($custom-typography-config);
+
+// 2. Define a custom theme.
+// REF: Color Tool: https://material.io/color/
+// REF: mat-palette($base-palette, $default: 500, $lighter: 100, $darker: 700)
+$primary: mat-palette($mat-blue-grey, 700, 500, 900);
+$accent: mat-palette($mat-teal, 700, 500, 900);
+
+// 3. Create the theme object. This can be created with mat-dark-theme or mat-light-theme.
+$theme: mat-light-theme($primary, $accent);
+
+// 4. Include all theme styles for core and each component used in your app.
+@include angular-material-theme($theme);
