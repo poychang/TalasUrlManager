@@ -6,7 +6,9 @@
         <div class="input-container">
           <mat-form-field>
             <input matInput placeholder="您的原始網址" formControlName="originUrl">
-            <mat-error *ngIf="form.controls['originUrl'].invalid">{{ getErrorMessage(form.controls['originUrl']) }}</mat-error>
+            <mat-error *ngIf="form.get('originUrl').invalid">
+              <span [appShowErrorMessage]="form.get('originUrl')"></span>
+            </mat-error>
           </mat-form-field>
           <button color="accent" mat-raised-button [disabled]="form.invalid" (click)="generate()">產生短網址</button>
         </div>
