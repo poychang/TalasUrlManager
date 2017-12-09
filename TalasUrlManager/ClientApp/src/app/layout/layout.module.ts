@@ -1,8 +1,6 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
 
-import {MyMaterialModule} from '../shared/my-material.module';
+import {SharedModule} from '../shared/shared.module';
 
 import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
@@ -12,7 +10,7 @@ import {
 import {ShortenListSectionComponent} from './shorten-list-section/shorten-list-section.component';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, MyMaterialModule],
+  imports: [SharedModule],
   exports:
     [HeaderComponent, ShortenInputSectionComponent, ShortenListSectionComponent, FooterComponent],
   declarations:
