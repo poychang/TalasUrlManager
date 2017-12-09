@@ -26,11 +26,16 @@ export class ShowErrorMessageDirective implements AfterViewInit, OnDestroy {
   }
 
   private _showErrorMessage(prop: string) {
+    console.log(prop);
     switch (prop) {
       case 'required':
         return '必填欄位';
       case 'pattern':
         return '格式錯誤';
+      case 'invalidHttpUrl':
+        return '網址格式錯誤';
+      default:
+        return '欄位錯誤';
     }
   }
 }
