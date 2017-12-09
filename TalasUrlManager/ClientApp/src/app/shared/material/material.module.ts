@@ -29,4 +29,4 @@ import {
     MatToolbarModule
   ],
 })
-export class MyMaterialModule {}
+export class MaterialModule {}
