@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TalasUrlManager.Middleware;
 using Utility.Options;
 
 namespace TalasUrlManager
@@ -27,7 +28,7 @@ namespace TalasUrlManager
                     CardinalString = Configuration["UtilityOptions:CardinalString"]
                 };
             });
-            services.AddSqliteManager(options =>
+            services.AddDbManager(options =>
             {
                 options.ConnectionString = Configuration["DbManagerOptions:ConnectionString"];
             });
@@ -44,6 +45,9 @@ namespace TalasUrlManager
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSpaStaticFiles();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }
