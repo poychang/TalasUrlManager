@@ -7,6 +7,7 @@ import {environment} from '../environments/environment';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import {CoreModule} from './core/core.module';
 import {PagesModule} from './pages/pages.module';
 
 @NgModule({
@@ -16,6 +17,7 @@ import {PagesModule} from './pages/pages.module';
     AppRoutingModule,
     NoopAnimationsModule,
     PagesModule,
+    CoreModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{ provide: 'api', useValue: environment.baseApi }],
