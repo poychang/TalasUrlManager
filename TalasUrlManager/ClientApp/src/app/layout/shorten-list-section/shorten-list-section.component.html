@@ -6,30 +6,47 @@
       </mat-form-field>
     </div>
 
-    <mat-table #table [dataSource]="dataSource">
-
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
       </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      <!-- ShortUrl Column -->
+      <ng-container matColumnDef="shortUrl">
+        <mat-header-cell *matHeaderCellDef> 短網址 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.shortUrl}} </mat-cell>
       </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+      <!-- CustomizeUrl Column -->
+      <ng-container matColumnDef="customizeUrl">
+        <mat-header-cell *matHeaderCellDef> 客製名稱 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.customizeUrl}} </mat-cell>
       </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      <!-- OriginalUrl Column -->
+      <ng-container matColumnDef="originalUrl">
+        <mat-header-cell *matHeaderCellDef> 長網址 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.originalUrl}} </mat-cell>
+      </ng-container>
+
+      <!-- ExpireDate Column -->
+      <ng-container matColumnDef="expireDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> 有效日期 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.expireDate}} </mat-cell>
+      </ng-container>
+
+      <!-- Clicks Column -->
+      <ng-container matColumnDef="clicks">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> 點擊次數 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.clicks}} </mat-cell>
+      </ng-container>
+
+      <!-- IsActivate Column -->
+      <ng-container matColumnDef="isActivate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> 是否啟用 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.isActivate}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
