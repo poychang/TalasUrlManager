@@ -18,7 +18,7 @@ import {PagesModule} from './pages/pages.module';
     PagesModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [{ provide: 'api', useValue: environment.baseApi }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
