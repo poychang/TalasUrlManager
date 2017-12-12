@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+import {MatNativeDateModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {ServiceWorkerModule} from '@angular/service-worker';
@@ -16,6 +17,7 @@ import {PagesModule} from './pages/pages.module';
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
+    MatNativeDateModule,
     PagesModule,
     CoreModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
