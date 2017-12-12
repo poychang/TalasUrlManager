@@ -1,0 +1,28 @@
+.container {
+  background-color: #fafafa;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.shorten-form {
+  max-width: 960px;
+  padding: 30px 24px 30px;
+}
+
+.info {
+  // justify-content: right;
+  // flex-direction: column;
+  padding: 0.5em 0;
+}
+
+.main-field>mat-form-field {
+  width: 100%;
+}
+
+.chip {
+  padding: 4px 12px;
+  margin: 0 0 0 8px;
+  line-height: 18px;
+  background-color: #e0e0e0;
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 24px;
+}
