@@ -1,16 +1,13 @@
-.constrain {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 30px 24px 30px;
+.container {
+  background-color: #fafafa;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .shorten-form {
-  min-width: 150px;
-  width: calc(100% - 32px);
-  margin: 10px 0;
+  max-width: 960px;
+  padding: 30px 30px;
 }
 
 mat-form-field {
-  width: calc(100% - 32px);
-  max-width: 550px;
+  width: calc(100% - 110px);
 }

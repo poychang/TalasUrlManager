@@ -1,19 +1,15 @@
-<mat-drawer-container>
-  <mat-drawer-content>
-    <div class="constrain">
+<div class="container" fxLayout="row">
+  <div fxFlex.gt-md="60%" fxFlex.lt-sm="100%" fxFlexOffset.gt-md="20%">
+    <form [formGroup]="form" class="shorten-form" novalidate>
       <h1 class="mat-h1">簡化你的網址連結</h1>
-      <form [formGroup]="form" class="shorten-form" novalidate>
-        <div class="input-container">
-          <mat-form-field>
-            <input matInput placeholder="您的原始網址" formControlName="originUrl">
-            <mat-error *ngIf="form.get('originUrl').invalid">
-              <span [appShowErrorMessage]="form.get('originUrl')"></span>
-            </mat-error>
-          </mat-form-field>
-          <button color="accent" mat-raised-button [disabled]="form.invalid" (click)="generate()">產生短網址</button>
-        </div>
-        <h3 class="mat-h3">簡化後的網址連結會使用 {{ shortenDomain }}XXXX 的樣式呈現</h3>
-      </form>
-    </div>
-  </mat-drawer-content>
-</mat-drawer-container>
+      <mat-form-field>
+        <input matInput placeholder="您的原始網址" formControlName="originUrl">
+        <mat-error *ngIf="form.get('originUrl').invalid">
+          <span [appShowErrorMessage]="form.get('originUrl')"></span>
+        </mat-error>
+      </mat-form-field>
+      <button color="accent" mat-raised-button [disabled]="form.invalid" (click)="generate()">產生短網址</button>
+      <h3 class="mat-h3">簡化後的網址連結會使用 {{ shortenDomain }}XXXX 的樣式呈現</h3>
+    </form>
+  </div>
+</div>
