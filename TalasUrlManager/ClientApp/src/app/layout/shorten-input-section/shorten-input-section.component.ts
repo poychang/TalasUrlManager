@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {validateHttpUrl} from '../../shared/validator/validate-http-url';
+import {ValidateHttpUrl} from '../../shared/validator/validate-http-url';
 
 @Component({
   selector: 'app-shorten-input-section',
@@ -16,7 +16,7 @@ export class ShortenInputSectionComponent implements OnInit {
   ngOnInit() {}
   createForm() {
     this.form = this.formBuilder.group(
-      { originUrl: ['', [Validators.required, validateHttpUrl]] },
+      { originUrl: ['', [Validators.required, ValidateHttpUrl]] },
     );
   }
   generate() { console.log(`產生 ${this.form.controls['originUrl'].value} 的短網址`); }
