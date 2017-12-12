@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {
   MatButtonModule,
   MatIconModule,
@@ -12,6 +13,7 @@ import {
 
 @NgModule({
   imports: [
+    FlexLayoutModule,
     MatButtonModule,
     MatIconModule,
     MatInputModule,
@@ -22,6 +24,7 @@ import {
     MatToolbarModule
   ],
   exports: [
+    FlexLayoutModule,
     MatButtonModule,
     MatIconModule,
     MatInputModule,

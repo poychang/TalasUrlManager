@@ -1,13 +1,15 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>{{ title }}</span>
+<div class="container" fxLayout="row">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>{{ title }}</span>
 
-    <span class="spacer"></span>
+      <span class="spacer"></span>
 
-    <span>
-      Crafted With
-      <mat-icon class="icon">favorite</mat-icon>
-      By Poy Chang
-    </span>
-  </mat-toolbar-row>
-</mat-toolbar>
+      <span fxShow fxHide.lt-sm="true">
+        Crafted With
+        <mat-icon class="icon">favorite</mat-icon>
+        By Poy Chang
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
