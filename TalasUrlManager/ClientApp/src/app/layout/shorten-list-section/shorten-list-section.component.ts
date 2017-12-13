@@ -1,8 +1,9 @@
 import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorIntl, MatSort, PageEvent} from '@angular/material';
+import {MatDialog, MatPaginator, MatPaginatorIntl, MatSort, PageEvent} from '@angular/material';
 
 import {ShortenDataSource} from '../../core/data-source/shorten-data-source';
 import {ShortenDataModel} from '../../core/models/shorten-data.model';
+import {QrcodeDialogComponent} from '../dialog/qrcode-dialog/qrcode-dialog.component';
 
 @Component({
   selector: 'app-shorten-list-section',
@@ -26,7 +27,8 @@ export class ShortenListSectionComponent implements OnInit, AfterViewInit {
 
   constructor(@Inject('baseShortUrl') public baseShortUrl: string,
               private paginatorIntl: MatPaginatorIntl,
-              private shortenDataSource: ShortenDataSource) {
+              private shortenDataSource: ShortenDataSource,
+              public dialog: MatDialog) {
     this.dataSource = this.shortenDataSource;
   }
 
@@ -49,6 +51,8 @@ export class ShortenListSectionComponent implements OnInit, AfterViewInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-  openEditDialog(ele: ShortenDataModel) { console.log('Edit', ele); }
-  openQrCodeDialog(ele: ShortenDataModel) { console.log('QrCode', ele); }
+  openEditDialog(item: ShortenDataModel) { console.log('Edit', item); }
+  openQrCodeDialog(item: ShortenDataModel) {
+    this.dialog.open(QrcodeDialogComponent, { data: item });
+  }
 }
