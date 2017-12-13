@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorIntl, MatSort, PageEvent} from '@angular/material';
 
 import {ShortenDataSource} from '../../core/data-source/shorten-data-source';
@@ -10,13 +10,22 @@ import {ShortenDataModel} from '../../core/models/shorten-data.model';
   styleUrls: ['./shorten-list-section.component.scss']
 })
 export class ShortenListSectionComponent implements OnInit, AfterViewInit {
-  displayedColumns =
-    ['id', 'shortUrl', 'customizeUrl', 'originalUrl', 'expireDate', 'clicks', 'isActivate'];
-  dataSource: ShortenDataSource;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource: ShortenDataSource;
+  displayedColumns = [
+    'id',
+    'shortUrl',
+    'customizeUrl',
+    'originalUrl',
+    'expireDate',
+    'clicks',
+    'isActivate',
+    'utility'
+  ];
 
-  constructor(private paginatorIntl: MatPaginatorIntl,
+  constructor(@Inject('shortenUrl') public shortenUrl: string,
+              private paginatorIntl: MatPaginatorIntl,
               private shortenDataSource: ShortenDataSource) {
     this.dataSource = this.shortenDataSource;
   }
@@ -26,7 +35,6 @@ export class ShortenListSectionComponent implements OnInit, AfterViewInit {
     this.paginatorIntl.nextPageLabel = '下一頁';
     this.paginatorIntl.previousPageLabel = '上一頁';
   }
-
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -36,10 +44,11 @@ export class ShortenListSectionComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();        // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
+  openEditDialog(ele: ShortenDataModel) { console.log('Edit', ele); }
+  openQrCodeDialog(ele: ShortenDataModel) { console.log('QrCode', ele); }
 }

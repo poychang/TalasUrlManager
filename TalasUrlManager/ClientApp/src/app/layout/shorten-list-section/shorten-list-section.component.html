@@ -10,43 +10,60 @@
       <!-- Id Column -->
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
       </ng-container>
 
       <!-- ShortUrl Column -->
       <ng-container matColumnDef="shortUrl">
         <mat-header-cell *matHeaderCellDef> 短網址 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.shortUrl}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{ shortenUrl }}/{{ element.shortUrl }} </mat-cell>
       </ng-container>
 
       <!-- CustomizeUrl Column -->
       <ng-container matColumnDef="customizeUrl">
-        <mat-header-cell *matHeaderCellDef> 客製名稱 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.customizeUrl}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef fxHide.lt-sm="true"> 客製名稱 </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxHide.lt-sm="true"> {{ element.customizeUrl }} </mat-cell>
       </ng-container>
 
       <!-- OriginalUrl Column -->
       <ng-container matColumnDef="originalUrl">
-        <mat-header-cell *matHeaderCellDef> 長網址 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.originalUrl}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef fxHide.lt-sm="true"> 長網址 </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxHide.lt-sm="true"> {{ element.originalUrl }} </mat-cell>
       </ng-container>
 
       <!-- ExpireDate Column -->
       <ng-container matColumnDef="expireDate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> 有效日期 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.expireDate}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide.lt-sm="true"> 有效日期 </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxHide.lt-sm="true"> {{ element.expireDate }} </mat-cell>
       </ng-container>
 
       <!-- Clicks Column -->
       <ng-container matColumnDef="clicks">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> 點擊次數 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.clicks}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide.lt-sm="true"> 點擊次數 </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxHide.lt-sm="true"> {{ element.clicks }} </mat-cell>
       </ng-container>
 
       <!-- IsActivate Column -->
       <ng-container matColumnDef="isActivate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> 是否啟用 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.isActivate}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide.lt-sm="true"> 是否啟用 </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxHide.lt-sm="true">
+          <mat-slide-toggle disabled [checked]="element.isActivate"></mat-slide-toggle>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Utility Column -->
+      <ng-container matColumnDef="utility">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div fxLayout="row" fxLayoutAlign="end">
+            <button color="accent" mat-icon-button matTooltip="編輯" matTooltipPosition="left" aria-label="編輯" (click)="openEditDialog(element)">
+              <mat-icon>mode_edit</mat-icon>
+            </button>
+            <button color="accent" mat-icon-button matTooltip="二維條碼" matTooltipPosition="right" aria-label="二維條碼" (click)="openQrCodeDialog(element)">
+              <mat-icon>crop_free</mat-icon>
+            </button>
+          </div>
+        </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

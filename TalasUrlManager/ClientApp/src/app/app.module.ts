@@ -22,7 +22,10 @@ import {PagesModule} from './pages/pages.module';
     CoreModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [{ provide: 'api', useValue: environment.baseApi }],
+  providers: [
+    { provide: 'api', useValue: environment.baseApi },
+    { provide: 'shortenUrl', useValue: environment.shortenUrl }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
