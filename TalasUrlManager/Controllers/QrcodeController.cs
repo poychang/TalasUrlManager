@@ -14,7 +14,7 @@ namespace TalasUrlManager.Controllers
             _utility = utility;
         }
 
-        // GET: api/QrCode?size=300&data=PoyChang
+        // GET: api/QrCode?size=300&content=PoyChang
         /// <summary>產生二維條碼圖片</summary>
         /// <param name="size">圖片尺寸</param>
         /// <param name="content">資訊</param>
