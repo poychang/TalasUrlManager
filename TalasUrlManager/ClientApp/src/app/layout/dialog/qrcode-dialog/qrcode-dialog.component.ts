@@ -9,7 +9,7 @@ import {ShortenDataModel} from '../../../core/models/shorten-data.model';
 })
 export class QrcodeDialogComponent implements OnInit {
   url = `${this.baseShortUrl}/${this.data.shortUrl}`;
-  qrcodeUrl = `${this.api}/QrCode?size=300&content=${this.baseShortUrl}/${this.data.shortUrl}`;
+  qrcodeUrl = `${this.api}/QrCode/${this.data.id}`;
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: ShortenDataModel,
               @Inject('baseShortUrl') private baseShortUrl: string,
