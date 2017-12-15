@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TalasUrlManager.Controllers
 {
-    [Route("api/t")]
+    [Route("api/[controller]")]
     public class RedirectionController : Controller
     {
         private readonly IRepository<ShortUrlSet> _repo;
@@ -20,17 +20,17 @@ namespace TalasUrlManager.Controllers
             _repo = dbManager.Repository<ShortUrlSet>();
         }
 
-        // GET api/t/5
+        // GET api/Redirection/5
         /// <summary>轉址至原網址</summary>
         /// <param name="cUrl">來源網址</param>
         /// <returns></returns>
         [HttpGet("{cUrl}")]
-        public IActionResult Get(string cUrl)
+        public IActionResult Get([FromRoute]string cUrl)
         {
             return RedirectToOriginalUrl(cUrl);
         }
 
-        // POST api/t
+        // POST api/Redirection
         /// <summary>轉址至原網址</summary>
         /// <param name="cUrl">來源網址</param>
         /// <returns></returns>
@@ -48,7 +48,10 @@ namespace TalasUrlManager.Controllers
             var entity = _repo.Read(p => p.ShortUrl == cUrl || p.CustomizeUrl == cUrl);
             if (!entity.IsActive || DateTime.Now > entity.ExpireDate) return NotFound("資源已失效");
 
-            var isValidUri = Uri.TryCreate(entity.OriginalUrl, UriKind.Absolute, out Uri uriResult)
+            entity.Clicks += 1;
+            _repo.SaveChanges();
+
+            var isValidUri = Uri.TryCreate(entity.OriginalUrl, UriKind.Absolute, out var uriResult)
                              && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
             return isValidUri ? new RedirectResult(uriResult.AbsoluteUri) : new RedirectResult($"http://{entity.OriginalUrl}");
         }
