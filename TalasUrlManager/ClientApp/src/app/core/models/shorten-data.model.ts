@@ -15,5 +15,5 @@ export interface ShortenDataModel {
   /** 點擊次數 */
   clicks: number;
   /** 是否啟用 */
-  isActivate: boolean;
+  isActive: boolean;
 }

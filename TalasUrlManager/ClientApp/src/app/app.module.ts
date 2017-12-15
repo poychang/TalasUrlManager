@@ -24,7 +24,7 @@ import {PagesModule} from './pages/pages.module';
   ],
   providers: [
     { provide: 'api', useValue: environment.baseApi },
-    { provide: 'shortenUrl', useValue: environment.shortenUrl }
+    { provide: 'baseShortUrl', useValue: environment.baseShortUrl }
   ],
   bootstrap: [AppComponent]
 })

@@ -16,7 +16,7 @@
       <!-- ShortUrl Column -->
       <ng-container matColumnDef="shortUrl">
         <mat-header-cell *matHeaderCellDef> 短網址 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ shortenUrl }}/{{ element.shortUrl }} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{ baseShortUrl }}/{{ element.shortUrl }} </mat-cell>
       </ng-container>
 
       <!-- CustomizeUrl Column -->
@@ -43,11 +43,11 @@
         <mat-cell *matCellDef="let element" fxHide.lt-sm="true"> {{ element.clicks }} </mat-cell>
       </ng-container>
 
-      <!-- IsActivate Column -->
-      <ng-container matColumnDef="isActivate">
+      <!-- IsActive Column -->
+      <ng-container matColumnDef="isActive">
         <mat-header-cell *matHeaderCellDef mat-sort-header fxHide.lt-sm="true"> 是否啟用 </mat-header-cell>
         <mat-cell *matCellDef="let element" fxHide.lt-sm="true">
-          <mat-slide-toggle disabled [checked]="element.isActivate"></mat-slide-toggle>
+          <mat-slide-toggle [checked]="element.isActive"></mat-slide-toggle>
         </mat-cell>
       </ng-container>
 

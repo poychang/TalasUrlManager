@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  shortenUrl: 'shorten.domain',
+  baseShortUrl: 'short.domain',
   baseApi: '/api'
 };

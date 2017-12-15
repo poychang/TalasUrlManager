@@ -3,13 +3,13 @@
     <form [formGroup]="form" class="shorten-form" novalidate>
       <h1 class="mat-h1">簡化你的網址連結</h1>
       <mat-form-field>
-        <input matInput placeholder="您的原始網址" formControlName="originUrl">
-        <mat-error *ngIf="form.get('originUrl').invalid">
-          <span [appShowErrorMessage]="form.get('originUrl')"></span>
+        <input matInput placeholder="您的原始網址" formControlName="originalUrl">
+        <mat-error *ngIf="form.get('originalUrl').invalid">
+          <span [appShowErrorMessage]="form.get('originalUrl')"></span>
         </mat-error>
       </mat-form-field>
       <button color="accent" mat-raised-button [disabled]="form.invalid" (click)="generate()">產生短網址</button>
-      <h3 class="mat-h3">簡化後的網址連結會使用 {{ shortenDomain }}XXXX 的樣式呈現</h3>
+      <h3 class="mat-h3">簡化後的網址連結會使用 {{ baseShortUrl }}/XXXX 的樣式呈現</h3>
     </form>
   </div>
 </div>

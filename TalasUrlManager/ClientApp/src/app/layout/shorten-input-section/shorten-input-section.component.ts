@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+
 import {ValidateHttpUrl} from '../../shared/validator/validate-http-url';
 
 @Component({
@@ -9,9 +10,11 @@ import {ValidateHttpUrl} from '../../shared/validator/validate-http-url';
 })
 export class ShortenInputSectionComponent implements OnInit {
   form: FormGroup;
-  shortenDomain = 'shorten.domain/';
 
-  constructor(private formBuilder: FormBuilder) { this.createForm(); }
+  constructor(@Inject('baseShortUrl') public baseShortUrl: string,
+              private formBuilder: FormBuilder) {
+    this.createForm();
+  }
 
   ngOnInit() {}
   createForm() {

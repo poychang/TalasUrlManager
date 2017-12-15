@@ -25,7 +25,7 @@ export class ShortenFormComponent implements OnInit, OnDestroy {
       originalUrl: new FormControl(
         '', { validators: [Validators.required, ValidateHttpUrl], updateOn: 'change' }),
       expireDate: new FormControl('', { validators: [], updateOn: 'change' }),
-      isActivate: new FormControl(true, { validators: [Validators.required], updateOn: 'change' }),
+      isActive: new FormControl(true, { validators: [Validators.required], updateOn: 'change' }),
     });
   }
   ngOnDestroy() { this.reset(); }

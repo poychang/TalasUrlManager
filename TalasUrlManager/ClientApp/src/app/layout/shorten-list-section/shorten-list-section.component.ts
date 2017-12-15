@@ -20,11 +20,11 @@ export class ShortenListSectionComponent implements OnInit, AfterViewInit {
     'originalUrl',
     'expireDate',
     'clicks',
-    'isActivate',
+    'isActive',
     'utility'
   ];
 
-  constructor(@Inject('shortenUrl') public shortenUrl: string,
+  constructor(@Inject('baseShortUrl') public baseShortUrl: string,
               private paginatorIntl: MatPaginatorIntl,
               private shortenDataSource: ShortenDataSource) {
     this.dataSource = this.shortenDataSource;
