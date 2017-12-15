@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material';
 import {ShortenDataModel} from '../../../core/models/shorten-data.model';
+import {ConfigurationService} from '../../../core/services/configuration.service';
 
 @Component({
   selector: 'app-qrcode-dialog',
@@ -8,12 +9,13 @@ import {ShortenDataModel} from '../../../core/models/shorten-data.model';
   styleUrls: ['./qrcode-dialog.component.scss']
 })
 export class QrcodeDialogComponent implements OnInit {
-  url = `${this.baseShortUrl}/${this.data.shortUrl}`;
+  config = this.configService.config;
+  url = `${this.config.shortUrlBase}/${this.data.shortUrl}`;
   qrcodeUrl = `${this.api}/QrCode/${this.data.id}`;
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: ShortenDataModel,
-              @Inject('baseShortUrl') private baseShortUrl: string,
-              @Inject('api') private api: string) {}
+              @Inject('api') private api: string,
+              private configService: ConfigurationService) {}
 
   ngOnInit() {}
 }

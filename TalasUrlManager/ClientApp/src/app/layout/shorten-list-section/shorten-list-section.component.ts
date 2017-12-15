@@ -4,6 +4,7 @@ import {MatDialog, MatPaginator, MatPaginatorIntl, MatSort, PageEvent} from '@an
 import {ShortenDataSource} from '../../core/data-source/shorten-data-source';
 import {ShortenDataModel} from '../../core/models/shorten-data.model';
 import {QrcodeDialogComponent} from '../dialog/qrcode-dialog/qrcode-dialog.component';
+import { ConfigurationService } from '../../core/services/configuration.service';
 
 @Component({
   selector: 'app-shorten-list-section',
@@ -14,6 +15,7 @@ export class ShortenListSectionComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource = this.shortenDataSource;
+  shortUrlBase = this.configService.config.shortUrlBase;
   displayedColumns = [
     'id',
     'shortUrl',
@@ -25,7 +27,7 @@ export class ShortenListSectionComponent implements OnInit, AfterViewInit {
     'utility'
   ];
 
-  constructor(@Inject('baseShortUrl') public baseShortUrl: string,
+  constructor(private configService: ConfigurationService,
               private paginatorIntl: MatPaginatorIntl,
               private shortenDataSource: ShortenDataSource,
               public dialog: MatDialog) {}
