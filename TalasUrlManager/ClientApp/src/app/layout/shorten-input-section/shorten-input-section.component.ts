@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {ValidateHttpUrl} from '../../shared/validator/validate-http-url';
 
@@ -12,15 +12,15 @@ export class ShortenInputSectionComponent implements OnInit {
   form: FormGroup;
 
   constructor(@Inject('baseShortUrl') public baseShortUrl: string,
-              private formBuilder: FormBuilder) {
-    this.createForm();
-  }
+              private shortenDataService: ShortenDataService) {}
 
-  ngOnInit() {}
+  ngOnInit() { this.createForm(); }
   createForm() {
-    this.form = this.formBuilder.group(
-      { originUrl: ['', [Validators.required, ValidateHttpUrl]] },
-    );
+    this.form = new FormGroup({
+      originalUrl: new FormControl(
+        '', { validators: [Validators.required, ValidateHttpUrl], updateOn: 'change' })
+    });
+  }
   }
   generate() { console.log(`產生 ${this.form.controls['originUrl'].value} 的短網址`); }
 }

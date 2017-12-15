@@ -13,13 +13,12 @@ export class ShortenDataSource extends MatTableDataSource<ShortenDataModel> {
 
   constructor(@Inject('api') private api: string, private http: HttpClient) {
     super();
-    this._fetchDataFromRemote();
+    this.fetchDataFromRemote();
   }
 
-  private _fetchDataFromRemote() {
-    this.http.get<ShortenDataModel[]>(`${this.api}/ShortUrl`).subscribe(dataset => {
-      this.data = [...this.data, ...dataset];
-    });
+  fetchDataFromRemote() {
+    this.http.get<ShortenDataModel[]>(`${this.api}/ShortUrl`)
+      .subscribe(dataset => { this.data = [...dataset]; });
   }
 
   fetchMoreData() {

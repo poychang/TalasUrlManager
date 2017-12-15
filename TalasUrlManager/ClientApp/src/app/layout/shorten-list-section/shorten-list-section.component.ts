@@ -13,7 +13,7 @@ import {QrcodeDialogComponent} from '../dialog/qrcode-dialog/qrcode-dialog.compo
 export class ShortenListSectionComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource: ShortenDataSource;
+  dataSource = this.shortenDataSource;
   displayedColumns = [
     'id',
     'shortUrl',
@@ -28,9 +28,7 @@ export class ShortenListSectionComponent implements OnInit, AfterViewInit {
   constructor(@Inject('baseShortUrl') public baseShortUrl: string,
               private paginatorIntl: MatPaginatorIntl,
               private shortenDataSource: ShortenDataSource,
-              public dialog: MatDialog) {
-    this.dataSource = this.shortenDataSource;
-  }
+              public dialog: MatDialog) {}
 
   ngOnInit() {
     this.paginatorIntl.itemsPerPageLabel = '每頁顯示';

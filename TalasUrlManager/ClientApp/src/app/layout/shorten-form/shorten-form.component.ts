@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 
 import {ShortenDataModel} from '../../core/models/shorten-data.model';
@@ -18,7 +18,9 @@ export class ShortenFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log(this.formData);
-
+    this.createForm();
+  }
+  createForm() {
     this.form = new FormGroup({
       shortUrl: new FormControl('', { validators: [Validators.required], updateOn: 'change' }),
       customizeUrl: new FormControl('', { validators: [], updateOn: 'change' }),
