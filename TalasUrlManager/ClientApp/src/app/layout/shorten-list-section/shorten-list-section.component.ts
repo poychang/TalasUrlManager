@@ -17,7 +17,7 @@ export class ShortenListSectionComponent implements OnInit, AfterViewInit {
   displayedColumns = [
     'id',
     'shortUrl',
-    'customizeUrl',
+    // 'customizeUrl',
     'originalUrl',
     'expireDate',
     'clicks',

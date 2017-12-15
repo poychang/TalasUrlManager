@@ -1,15 +1,12 @@
 $form-color: #f5f5f5;
 .constrain {
   max-width: 960px;
+  min-width: 300px;
   margin: 0 auto;
   padding: 30px 24px 30px;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-}
+.container {}
 
 .header {
   background-color: $form-color;
@@ -38,4 +35,43 @@ $form-color: #f5f5f5;
 
 .mat-column-id {
   max-width: 40px;
+}
+
+.mat-column-shortUrl {
+  max-width: 130px;
+}
+
+.mat-column-expireDate {
+  max-width: 60px;
+}
+
+.mat-column-clicks {
+  max-width: 60px;
+}
+
+.mat-column-isActive {
+  max-width: 80px;
+}
+
+.mat-column-utility {
+  max-width: 100px;
+  min-width: 100px;
+}
+
+::ng-deep .cell-center,
+.cell-center>.mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}
+
+::ng-deep .cell-right,
+.cell-right>.mat-sort-header-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+::ng-deep .cell-left,
+.cell-left>.mat-sort-header-container {
+  display: flex;
+  justify-content: flex-start;
 }

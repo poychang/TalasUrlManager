@@ -8,7 +8,7 @@
           <span [appShowErrorMessage]="form.get('originalUrl')"></span>
         </mat-error>
       </mat-form-field>
-      <button color="accent" mat-raised-button [disabled]="form.invalid" (click)="generate()">產生短網址</button>
+      <button color="accent" class="mat-elevation-z8" mat-raised-button [disabled]="form.invalid" (click)="generate()">產生短網址</button>
       <h3 class="mat-h3">簡化後的網址連結會使用 {{ baseShortUrl }}/XXXX 的樣式呈現</h3>
     </form>
   </div>

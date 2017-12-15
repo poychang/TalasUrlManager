@@ -1,0 +1,37 @@
+[{
+  "id": 1,
+  "shortUrl": "tt1",
+  "customizeUrl": "google",
+  "originalUrl": "http://www.google.com",
+  "createDate": "2017/12/01",
+  "expireDate": "2017/12/31",
+  "clicks": 120,
+  "isActive": true
+}, {
+  "id": 2,
+  "shortUrl": "tt2",
+  "customizeUrl": "google",
+  "originalUrl": "http://www.google.com",
+  "createDate": "2017/12/01",
+  "expireDate": "2017/12/31",
+  "clicks": 2,
+  "isActive": true
+}, {
+  "id": 3,
+  "shortUrl": "tt3",
+  "customizeUrl": "google",
+  "originalUrl": "http://www.google.com",
+  "createDate": "2017/12/01",
+  "expireDate": "2017/12/31",
+  "clicks": 33,
+  "isActive": true
+}, {
+  "id": 4,
+  "shortUrl": "tt4",
+  "customizeUrl": "google",
+  "originalUrl": "http://www.google.com",
+  "createDate": "2017/12/01",
+  "expireDate": "2017/12/31",
+  "clicks": 11,
+  "isActive": true
+}]

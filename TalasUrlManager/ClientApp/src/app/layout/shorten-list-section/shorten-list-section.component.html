@@ -1,5 +1,5 @@
 <div class="constrain">
-  <div class="container mat-elevation-z8">
+  <div class="container mat-elevation-z8" fxLayout="column">
     <div class="header">
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -9,45 +9,47 @@
     <mat-table #table [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="asc">
       <!-- Id Column -->
       <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="cell-left"> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="cell-left"> {{ element.id }} </mat-cell>
       </ng-container>
 
       <!-- ShortUrl Column -->
       <ng-container matColumnDef="shortUrl">
-        <mat-header-cell *matHeaderCellDef> 短網址 </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{ baseShortUrl }}/{{ element.shortUrl }} </mat-cell>
+        <mat-header-cell *matHeaderCellDef class="cell-left"> 短網址 </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="cell-left">
+          <span>{{ baseShortUrl }}/{{ element.shortUrl }}</span>
+        </mat-cell>
       </ng-container>
 
       <!-- CustomizeUrl Column -->
       <ng-container matColumnDef="customizeUrl">
-        <mat-header-cell *matHeaderCellDef fxHide.lt-sm="true"> 客製名稱 </mat-header-cell>
-        <mat-cell *matCellDef="let element" fxHide.lt-sm="true"> {{ element.customizeUrl }} </mat-cell>
+        <mat-header-cell *matHeaderCellDef class="cell-left" fxHide.lt-sm="true"> 客製名稱 </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="cell-left" fxHide.lt-sm="true"> {{ element.customizeUrl }} </mat-cell>
       </ng-container>
 
       <!-- OriginalUrl Column -->
       <ng-container matColumnDef="originalUrl">
-        <mat-header-cell *matHeaderCellDef fxHide.lt-sm="true"> 長網址 </mat-header-cell>
-        <mat-cell *matCellDef="let element" fxHide.lt-sm="true"> {{ element.originalUrl }} </mat-cell>
+        <mat-header-cell *matHeaderCellDef class="cell-left" fxHide.lt-sm="true"> 長網址 </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="cell-left" fxHide.lt-sm="true"> {{ element.originalUrl }} </mat-cell>
       </ng-container>
 
       <!-- ExpireDate Column -->
       <ng-container matColumnDef="expireDate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide.lt-sm="true"> 有效日期 </mat-header-cell>
-        <mat-cell *matCellDef="let element" fxHide.lt-sm="true"> {{ element.expireDate }} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="cell-center" fxHide.lt-sm="true"> 有效日期 </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="cell-center" fxHide.lt-sm="true"> {{ element.expireDate }} </mat-cell>
       </ng-container>
 
       <!-- Clicks Column -->
       <ng-container matColumnDef="clicks">
-        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide.lt-sm="true"> 點擊次數 </mat-header-cell>
-        <mat-cell *matCellDef="let element" fxHide.lt-sm="true"> {{ element.clicks }} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="cell-right" fxHide.lt-sm="true"> 點擊次數 </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="cell-right" fxHide.lt-sm="true"> {{ element.clicks }} </mat-cell>
       </ng-container>
 
       <!-- IsActive Column -->
       <ng-container matColumnDef="isActive">
-        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide.lt-sm="true"> 是否啟用 </mat-header-cell>
-        <mat-cell *matCellDef="let element" fxHide.lt-sm="true">
-          <mat-slide-toggle [checked]="element.isActive"></mat-slide-toggle>
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="cell-center" fxHide.lt-sm="true"> 是否啟用 </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="cell-center" fxHide.lt-sm="true">
+          <mat-slide-toggle disable [checked]="element.isActive"></mat-slide-toggle>
         </mat-cell>
       </ng-container>
 
