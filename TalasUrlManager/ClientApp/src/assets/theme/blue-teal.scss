@@ -1,0 +1,15 @@
+/* Custom Material */
+@import '~@angular/material/theming';
+
+@import url('https://fonts.googleapis.com/earlyaccess/notosanstc.css');
+$custom-typography-config: mat-typography-config(
+  $font-family: 'Roboto, "Noto Sans TC", "Helvetica Neue", sans-serif'
+);
+
+@include mat-core($custom-typography-config);
+
+$primary: mat-palette($mat-blue, 800, 500, 900);
+$accent: mat-palette($mat-teal, 700, 600, 800);
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);

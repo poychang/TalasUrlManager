@@ -1,0 +1,13 @@
+.container {
+  background-color: #fafafa;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.shorten-form {
+  max-width: 960px;
+  padding: 30px 30px;
+}
+
+mat-form-field {
+  width: calc(100% - 110px);
+}

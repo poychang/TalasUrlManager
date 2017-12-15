@@ -1,0 +1,54 @@
+<div class="container" fxLayout="row">
+  <div fxFlex="60%" fxFlexOffset="20%">
+    <form [formGroup]="form" class="shorten-form" novalidate>
+      <div class="info" fxLayout="row" fxLayoutAlign="end">
+        <mat-chip-list>
+          <mat-chip color="accent" selected="true" matTooltip="點擊次數" matTooltipPosition="above">
+            <span>{{ formData.clicks }}</span>
+          </mat-chip>
+          <mat-chip color="accent" selected="true" matTooltip="建立日期" matTooltipPosition="above">
+            <span>{{ formData.createDate }}</span>
+          </mat-chip>
+        </mat-chip-list>
+        <div class="chip">
+          <mat-slide-toggle formControlName="isActive" matTooltip="是否啟用" matTooltipPosition="above"></mat-slide-toggle>
+        </div>
+      </div>
+
+      <div fxLayout="row">
+        <mat-form-field fxFlex="100%">
+          <input matInput placeholder="長網址" formControlName="originalUrl">
+          <mat-error *ngIf="form.get('originalUrl').invalid">
+            <span [appShowErrorMessage]="form.get('originalUrl')"></span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row">
+        <mat-form-field fxFlex="100%">
+          <input matInput placeholder="短網址" formControlName="shortUrl">
+          <mat-error *ngIf="form.get('shortUrl').invalid">
+            <span [appShowErrorMessage]="form.get('shortUrl')"></span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="100%">
+          <input matInput placeholder="客製名稱" formControlName="customizeUrl">
+          <mat-error *ngIf="form.get('customizeUrl').invalid">
+            <span [appShowErrorMessage]="form.get('customizeUrl')"></span>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="100%">
+          <input matInput [matDatepicker]="picker" placeholder="有效日期" formControlName="expireDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.get('expireDate').invalid">
+            <span [appShowErrorMessage]="form.get('expireDate')"></span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <button color="accent" mat-raised-button [disabled]="form.invalid" (click)="save()">儲存</button>
+      <button color="" mat-raised-button (click)="cancel()">取消</button>
+    </form>
+  </div>
+</div>

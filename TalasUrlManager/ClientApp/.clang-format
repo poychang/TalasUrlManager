@@ -1,0 +1,13 @@
+BasedOnStyle:              Mozilla
+BreakBeforeBraces:         'Custom'
+BraceWrapping: {
+    AfterClass:            'false'
+    AfterFunction :        'false'
+    BeforeCatch :          'false'
+    IndentBraces :         'false'
+}
+ColumnLimit:               100
+Language:                  JavaScript
+MaxEmptyLinesToKeep:       1
+JavaScriptQuotes:          Single
+SpacesInContainerLiterals: false
