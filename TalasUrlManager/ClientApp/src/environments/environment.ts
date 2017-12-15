@@ -6,7 +6,6 @@
 
 export const environment = {
   production: false,
-  baseShortUrl: 'short.domain',
   baseApi: '/api'
   // baseApi: '/assets'
 };

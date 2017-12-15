@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {ShortenDataSource} from '../../core/data-source/shorten-data-source';
 import {ShortenDataModel} from '../../core/models/shorten-data.model';
+import {ConfigurationService} from '../../core/services/configuration.service';
 import {ShortenDataService} from '../../core/services/shorten-data.service';
 import {ValidateHttpUrl} from '../../shared/validator/validate-http-url';
 
@@ -12,9 +13,10 @@ import {ValidateHttpUrl} from '../../shared/validator/validate-http-url';
   styleUrls: ['./shorten-input-section.component.scss']
 })
 export class ShortenInputSectionComponent implements OnInit {
+  shortUrlBase = this.configService.config.shortUrlBase;
   form: FormGroup;
 
-  constructor(@Inject('baseShortUrl') public baseShortUrl: string,
+  constructor(private configService: ConfigurationService,
               private shortenDataService: ShortenDataService) {}
 
   ngOnInit() { this.createForm(); }
