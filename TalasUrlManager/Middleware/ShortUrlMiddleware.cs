@@ -10,13 +10,13 @@ namespace TalasUrlManager.Middleware
     public class ShortUrlMiddleware
     {
         private readonly RequestDelegate _next;
-        public IConfiguration Configuration { get; }
+        private readonly IConfiguration _configuration;
 
         /// <summary>建構式</summary>
         public ShortUrlMiddleware(RequestDelegate next, IConfiguration configuration)
         {
             _next = next;
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
         /// <summary>任務呼叫</summary>
@@ -25,7 +25,7 @@ namespace TalasUrlManager.Middleware
         {
             await _next.Invoke(context);
 
-            var prefix = string.IsNullOrEmpty(Configuration["ShortUrlPrefix"]) ? "@" : Configuration["ShortUrlPrefix"];
+            var prefix = string.IsNullOrEmpty(_configuration["ShortUrlPrefix"]) ? "@" : _configuration["ShortUrlPrefix"];
             var shortUrlId = context.Request.Path.Value.Split('/').Last();
 
             if (context.Request.Path.Value.StartsWith($"/{prefix}/"))       // 網址是 /@/ 開頭
