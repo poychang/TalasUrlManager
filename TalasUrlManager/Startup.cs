@@ -46,6 +46,7 @@ namespace TalasUrlManager
             }
 
             app.UseSpaStaticFiles();
+            app.UseShortUrlRoute();
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseMvc();
