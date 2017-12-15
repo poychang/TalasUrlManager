@@ -1,6 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
+import {ShortenDataSource} from '../../core/data-source/shorten-data-source';
+import {ShortenDataModel} from '../../core/models/shorten-data.model';
+import {ShortenDataService} from '../../core/services/shorten-data.service';
 import {ValidateHttpUrl} from '../../shared/validator/validate-http-url';
 
 @Component({
@@ -21,6 +24,11 @@ export class ShortenInputSectionComponent implements OnInit {
         '', { validators: [Validators.required, ValidateHttpUrl], updateOn: 'change' })
     });
   }
+  generate() {
+    const item = {
+      originalUrl: this.form.get('originalUrl').value,
+    } as ShortenDataModel;
+    this.shortenDataService.save(item).subscribe(() => {}, (e) => { console.log(e); });
+    this.form.reset();
   }
-  generate() { console.log(`產生 ${this.form.controls['originUrl'].value} 的短網址`); }
 }
