@@ -14,6 +14,52 @@
 * `DbManager.cs` 使用 InMemory 資料庫，只用來測試，重點在 `Repository<TEtity>` 這個方法，此方法會產生操作 DbSet 的 Repository 物件
 * `SqliteManager.cs` 將資料庫換成 SQLite
 
+## 使用方式
+
+>假設要將此 DataAccess 專案加入至 ASP.NET WebAPI Core 專案中使用。
+
+* 在 `Schema` 中設定資料庫(DbContext 類)及資料表(Set 類)
+* 移至 WebAPI 專案的 `Startup.cs` 檔案中的 `ConfigureServices` 方法，加入以下程式碼，將 DbManager 服務注入應用程式：
+```csharp
+services.AddDbManager(options =>
+{
+    options.ConnectionString = Configuration["DbManagerOptions:ConnectionString"];
+});
+```
+* 上述的 DbManager 可依需求改成 SqliteManager，或自行擴充所需的 IDbManager 實作
+* 接著可以參考下列程式碼將 IDbManager 注入 Controller 中使用
+```csharp
+public class DemoController : Controller
+{
+    private readonly IRepository<DemoSet> _repo;
+
+    public DemoController(IDbManager dbManager)
+    {
+        _repo = dbManager.Repository<DemoSet>();
+    }
+
+    // GET api/Demo/5
+    [HttpGet("{id}")]
+    public IActionResult Get(int id)
+    {
+        return new JsonResult(_repo.Read(p => p.Id == id));
+    }
+
+    // POST api/Demo
+    [HttpPost]
+    public IActionResult Post([FromBody]DemoSet data)
+    {
+        if (!ModelState.IsValid) return BadRequest();
+
+        data.CreateDate = DateTime.Now;
+        _repo.Create(data);
+        _repo.SaveChanges();
+
+        return Get(entity.Id);
+    }
+}
+```
+
 ## 相關資訊
 
 * 教學文(en)：[使用 EF Core 在 Console App 建立 新資料庫](https://docs.microsoft.com/zh-tw/ef/core/get-started/netcore/new-db-sqlite)
