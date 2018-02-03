@@ -1,6 +1,6 @@
-﻿using System;
-using DataAccess;
+﻿using DataAccess;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using System;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services">The <see cref="IServiceCollection"/> to add services to.</param>
         /// <param name="setupAction">The middleware configuration options.</param>
         /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
-        public static IServiceCollection AddDbManager(this IServiceCollection services, Action<DbManagerOptions> setupAction)
+        public static IServiceCollection AddDbManager(this IServiceCollection services, Action<DbManagerOptions> setupAction = null)
         {
             if (services == null)
             {
@@ -35,16 +35,12 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained.</returns>
         public static IServiceCollection AddSqliteManager(this IServiceCollection services, Action<DbManagerOptions> setupAction)
         {
-            if (services == null)
+            if (services == null || setupAction == null)
             {
                 throw new ArgumentNullException(nameof(services));
             }
 
-            if (setupAction != null)
-            {
-                services.Configure(setupAction);
-            }
-
+            services.Configure(setupAction);
             services.TryAddSingleton<IDbManager, SqliteManager>();
 
             return services;
