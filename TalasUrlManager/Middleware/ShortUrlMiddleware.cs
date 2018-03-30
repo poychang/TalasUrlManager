@@ -26,9 +26,9 @@ namespace TalasUrlManager.Middleware
             await _next.Invoke(context);
 
             var prefix = string.IsNullOrEmpty(_configuration["ShortUrlPrefix"]) ? "@" : _configuration["ShortUrlPrefix"];
-            var shortUrlId = context.Request.Path.Value.Split('/').Last();
+            var shortUrlId = context.Request.Path.Value.Split(prefix).Last();
 
-            if (context.Request.Path.Value.StartsWith($"/{prefix}/"))       // 網址是 /@/ 開頭
+            if (context.Request.Path.Value.StartsWith($"/{prefix}"))       // 網址是 /@ 開頭
             {
                 context.Request.Path = $"/api/Redirection/{shortUrlId}";    // 將網址改成 API 的轉址功能
                 context.Response.StatusCode = 307;                          // 並將 HTTP 狀態碼修改為 307 暫時重新導向

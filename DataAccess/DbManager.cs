@@ -18,7 +18,7 @@ namespace DataAccess
         /// <summary>是否已清除</summary>
         protected bool Disposed;
 
-        /// <summary></summary>
+        /// <summary>選項存取子</summary>
         protected IOptions<DbManagerOptions> OptionsAccessor;
 
         /// <summary>建構式</summary>
