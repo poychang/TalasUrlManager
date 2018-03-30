@@ -10,7 +10,7 @@ import {ConfigurationService} from '../../../core/services/configuration.service
 })
 export class QrcodeDialogComponent implements OnInit {
   config = this.configService.config;
-  url = `${this.config.shortUrlBase}/${this.data.shortUrl}`;
+  url = `${this.config.shortUrlBase}${this.data.shortUrl}`;
   qrcodeUrl = `${this.api}/QrCode/${this.data.id}`;
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: ShortenDataModel,
