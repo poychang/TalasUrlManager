@@ -30,7 +30,9 @@
       <!-- OriginalUrl Column -->
       <ng-container matColumnDef="originalUrl">
         <mat-header-cell *matHeaderCellDef class="cell-left" fxHide.lt-sm="true"> 長網址 </mat-header-cell>
-        <mat-cell *matCellDef="let element" class="cell-left" fxHide.lt-sm="true"> {{ element.originalUrl }} </mat-cell>
+        <mat-cell *matCellDef="let element" class="cell-left" fxHide.lt-sm="true">
+            <span [matTooltip]="element.originalUrl">{{ element.originalUrl | limitStrLen:50 }}</span>
+        </mat-cell>
       </ng-container>
 
       <!-- ExpireDate Column -->
@@ -58,9 +60,9 @@
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let element">
           <div fxLayout="row" fxLayoutAlign="end">
-            <button color="accent" mat-icon-button matTooltip="編輯" matTooltipPosition="left" aria-label="編輯" (click)="openEditDialog(element)">
+            <!-- <button color="accent" mat-icon-button matTooltip="編輯" matTooltipPosition="left" aria-label="編輯" (click)="openEditDialog(element)">
               <mat-icon>mode_edit</mat-icon>
-            </button>
+            </button> -->
             <button color="accent" mat-icon-button matTooltip="二維條碼" matTooltipPosition="right" aria-label="二維條碼" (click)="openQrCodeDialog(element)">
               <mat-icon>crop_free</mat-icon>
             </button>

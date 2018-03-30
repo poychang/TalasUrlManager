@@ -23,7 +23,7 @@ export class ShortenListSectionComponent implements OnInit, AfterViewInit {
     'originalUrl',
     'expireDate',
     'clicks',
-    'isActive',
+    // 'isActive',
     'utility'
   ];
 

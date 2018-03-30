@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../shared/material/material.module';
 
 import {DirectiveModule} from './directive/directive.module';
+import {LimitStrLenPipe} from './pipe/limit-str-len.pipe';
 
 @NgModule({
   imports: [
@@ -22,8 +23,9 @@ import {DirectiveModule} from './directive/directive.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    DirectiveModule
+    DirectiveModule,
+    LimitStrLenPipe
   ],
-  declarations: []
+  declarations: [LimitStrLenPipe]
 })
 export class SharedModule {}
