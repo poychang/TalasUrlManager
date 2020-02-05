@@ -28,10 +28,11 @@ namespace TalasUrlManager
                     CardinalString = Configuration["UtilityOptions:CardinalString"]
                 };
             });
-            services.AddDbManager(options =>
-            {
-                options.ConnectionString = Configuration["DbManagerOptions:ConnectionString"];
-            });
+            services.AddInMemoryDbManager();
+            //services.AddSqliteManager(options =>
+            //{
+            //    options.ConnectionString = Configuration["DbManagerOptions:ConnectionString"];
+            //});
 
             services.AddMvc();
             services.AddAutoMapper();

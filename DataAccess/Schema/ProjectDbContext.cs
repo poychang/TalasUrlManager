@@ -2,15 +2,16 @@
 
 namespace DataAccess.Schema
 {
-    public class TalasUrlDbContext : DbContext
+    public class ProjectDbContext : DbContext
     {
         /// <summary>建構式</summary>
         /// <param name="options">設定 TalasUrlDbContext 的選項</param>
-        public TalasUrlDbContext(DbContextOptions<TalasUrlDbContext> options)
+        public ProjectDbContext(DbContextOptions<ProjectDbContext> options)
             : base(options)
         {
         }
 
+        /// <summary>ShortUrl 資料集</summary>
         public DbSet<ShortUrlSet> ShortUrl { get; set; }
     }
 }

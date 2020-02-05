@@ -7,6 +7,9 @@ namespace DataAccess
     /// <remarks>REF: 採 Unit of Work 模式 ( https://ithelp.ithome.com.tw/articles/10157700 )</remarks>
     public interface IDbManager : IDisposable
     {
+        /// <summary>初始化 DbContext</summary>
+        void InitDbContext();
+
         /// <summary>檢查資料庫是否存在</summary>
         /// <returns>是否存在</returns>
         bool IsDatabasebExist();

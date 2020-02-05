@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 
 namespace DataAccess
 {
-    public class DbManager : IDbManager
+    public abstract class DbManager : IDbManager
     {
         /// <summary>資料庫 Context</summary>
         protected DbContext Context;
@@ -30,19 +30,19 @@ namespace DataAccess
         }
 
         /// <summary>初始化 DbContext</summary>
-        private void InitDbContext()
+        public void InitDbContext()
         {
             UseDbContext();
             Console.WriteLine("Initialed Database");
         }
 
-        /// <summary>使用 InMemory 資料庫</summary>
+        /// <summary>預設使用 InMemory 資料庫</summary>
         protected virtual void UseDbContext()
         {
-            var contextOptions = new DbContextOptionsBuilder<TalasUrlDbContext>()
+            var contextOptions = new DbContextOptionsBuilder<ProjectDbContext>()
                 .UseInMemoryDatabase(databaseName: "MyDatabase")
                 .Options;
-            Context = new TalasUrlDbContext(contextOptions);
+            Context = new ProjectDbContext(contextOptions);
         }
 
         /// <summary>解構式</summary>
