@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace DataAccess.Repository
+namespace DataAccess.Common
 {
     /// <summary>Entity Repository 介面</summary>
     /// <typeparam name="TEntity">任意 Entity</typeparam>

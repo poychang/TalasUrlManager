@@ -1,8 +1,8 @@
-﻿using DataAccess.Schema;
+﻿using DataAccess.Database.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace DataAccess
+namespace DataAccess.Database
 {
     /// <summary>SQLite 資料庫管理者</summary>
     /// <remarks>REF: 實現標準 Dispose 模式 ( https://dotblogs.com.tw/larrynung/2011/03/10/21774 )</remarks>

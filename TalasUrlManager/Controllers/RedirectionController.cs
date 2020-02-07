@@ -1,7 +1,7 @@
 ﻿using System;
-using DataAccess;
-using DataAccess.Repository;
-using DataAccess.Schema;
+using DataAccess.Common;
+using DataAccess.Database;
+using DataAccess.Database.Schema;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

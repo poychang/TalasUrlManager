@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using DataAccess.Schema;
+using DataAccess.Database.Schema;
 using TalasUrlManager.Models;
 
 namespace TalasUrlManager

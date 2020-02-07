@@ -1,4 +1,4 @@
-﻿namespace DataAccess
+﻿namespace DataAccess.Database
 {
     /// <summary>資料庫管理者選項</summary>
     public class DbManagerOptions

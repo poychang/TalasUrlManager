@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using DataAccess.Schema;
+using DataAccess.Database.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;

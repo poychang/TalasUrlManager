@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using DataAccess;
-using DataAccess.Repository;
-using DataAccess.Schema;
+using DataAccess.Common;
+using DataAccess.Database;
+using DataAccess.Database.Schema;
 using Microsoft.AspNetCore.Mvc;
 using Utility;
 

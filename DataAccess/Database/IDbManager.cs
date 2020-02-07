@@ -1,7 +1,7 @@
 ﻿using System;
-using DataAccess.Repository;
+using DataAccess.Common;
 
-namespace DataAccess
+namespace DataAccess.Database
 {
     /// <summary>資料庫管理者介面</summary>
     /// <remarks>REF: 採 Unit of Work 模式 ( https://ithelp.ithome.com.tw/articles/10157700 )</remarks>

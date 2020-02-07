@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Schema
+namespace DataAccess.Database.Schema
 {
     public class ProjectDbContext : DbContext
     {

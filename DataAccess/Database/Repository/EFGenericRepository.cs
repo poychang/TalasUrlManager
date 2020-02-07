@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using DataAccess.Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccess.Repository
+namespace DataAccess.Database.Repository
 {
     /// <summary>實作 Entity Framework Generic Repository</summary>
     /// <remarks>

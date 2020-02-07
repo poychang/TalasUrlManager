@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataAccess.Schema
+namespace DataAccess.Database.Schema
 {
     /// <summary>ShortUrl 資料表模型</summary>
     public class ShortUrlSet

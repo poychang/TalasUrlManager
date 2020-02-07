@@ -1,8 +1,8 @@
-﻿using DataAccess.Schema;
+﻿using DataAccess.Database.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace DataAccess
+namespace DataAccess.Database
 {
     /// <summary>InMemoryDb 資料庫管理者</summary>
     public class InMemoryDbManager : DbManager

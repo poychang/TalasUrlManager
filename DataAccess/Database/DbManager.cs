@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections;
-using DataAccess.Repository;
-using DataAccess.Schema;
+using DataAccess.Common;
+using DataAccess.Database.Repository;
+using DataAccess.Database.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace DataAccess
+namespace DataAccess.Database
 {
     public abstract class DbManager : IDbManager
     {
         /// <summary>資料庫 Context</summary>
         protected DbContext Context;
-
         /// <summary>Repository 池</summary>
         protected Hashtable Repositories;
-
         /// <summary>是否已清除</summary>
         protected bool Disposed;
-
         /// <summary>選項存取子</summary>
         protected IOptions<DbManagerOptions> OptionsAccessor;
 
@@ -43,33 +41,6 @@ namespace DataAccess
                 .UseInMemoryDatabase(databaseName: "MyDatabase")
                 .Options;
             Context = new ProjectDbContext(contextOptions);
-        }
-
-        /// <summary>解構式</summary>
-        ~DbManager()
-        {
-            Dispose(false);
-        }
-
-        /// <summary>清除此類別資源</summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>清除此類別資源</summary>
-        /// <param name="disposing">是否在清理中</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!Disposed)
-            {
-                if (disposing)
-                {
-                    Context.Dispose();
-                }
-            }
-            Disposed = true;
         }
 
         /// <summary>儲存所有異動</summary>
@@ -102,11 +73,37 @@ namespace DataAccess
             // 將初始化的 Entity Repository 實體存放進 Repository 池
             var repositoryType = typeof(EFGenericRepository<>);
             var repositoryInstance =
-                Activator.CreateInstance(repositoryType
-                    .MakeGenericType(typeof(TEntity)), Context);
+                Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), Context);
             Repositories.Add(type, repositoryInstance);
 
             return (IRepository<TEntity>)Repositories[type];
+        }
+
+        /// <summary>解構式</summary>
+        ~DbManager()
+        {
+            Dispose(false);
+        }
+
+        /// <summary>清除此類別資源</summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>清除此類別資源</summary>
+        /// <param name="disposing">是否在清理中</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!Disposed)
+            {
+                if (disposing)
+                {
+                    Context.Dispose();
+                }
+            }
+            Disposed = true;
         }
     }
 }
