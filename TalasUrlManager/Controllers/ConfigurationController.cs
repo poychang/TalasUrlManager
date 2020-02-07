@@ -5,8 +5,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace TalasUrlManager.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
-    public class ConfigurationController : Controller
+    public class ConfigurationController : ControllerBase
     {
         private readonly IConfiguration _configuration;
 

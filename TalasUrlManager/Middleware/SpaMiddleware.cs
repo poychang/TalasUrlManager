@@ -37,7 +37,7 @@ namespace TalasUrlManager.Middleware
     public static class SpaExtensions
     {
         /// <summary>存取 SPA 網頁資源</summary>
-        public static IApplicationBuilder UseSpaStaticFiles(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseTalasUrlManagerSpaStaticFiles(this IApplicationBuilder builder)
         {
             return builder.UseMiddleware<SpaMiddleware>();
         }

@@ -9,8 +9,9 @@ using Utility;
 
 namespace TalasUrlManager.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
-    public class ShortUrlController : Controller
+    public class ShortUrlController : ControllerBase
     {
         private readonly IRepository<ShortUrlSet> _repo;
         private readonly IMapper _mapper;

@@ -8,8 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TalasUrlManager.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
-    public class RedirectionController : Controller
+    public class RedirectionController : ControllerBase
     {
         private readonly IRepository<ShortUrlSet> _repo;
 

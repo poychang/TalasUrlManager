@@ -8,8 +8,9 @@ using Utility;
 namespace TalasUrlManager.Controllers
 {
     /// <summary>二維條碼圖片控制器</summary>
+    [ApiController]
     [Route("api/[controller]")]
-    public class QrCodeController : Controller
+    public class QrCodeController : ControllerBase
     {
         private readonly IRepository<ShortUrlSet> _repo;
         private readonly IUtilityService _utility;
